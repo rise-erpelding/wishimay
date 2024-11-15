@@ -9,8 +9,10 @@ export default async function Home() {
   console.log(wishLists);
   return (
     <>
-    <h1>Wish Lists 2024</h1>
+    <h1 className="text-2xl font-bold p-4">Wish Lists 2024</h1>
     <WishList items={items} />
+    <WishList items={items} />
+
     {/* <div>
       Hello world
       <ul>
