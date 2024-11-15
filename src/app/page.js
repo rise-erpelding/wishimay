@@ -1,11 +1,24 @@
 // import Image from "next/image";
+import WishList from './components/WishList';
+import { fetchEntries } from '../lib/contentful';
 
-export default function Home() {
+export default async function Home() {
+  const items = await fetchEntries();
+  // console.log(items);
+  const wishLists = items.filter(item => item.sys.contentType.sys.id === "wishList");
+  console.log(wishLists);
   return (
     <>
-    <div>
+    <h1>Wish Lists 2024</h1>
+    <WishList items={items} />
+    {/* <div>
       Hello world
-    </div>
+      <ul>
+        {items.map((item, index) => (
+            <li key={item.sys.id}>{index}. {item.fields.title}</li>
+        ))}
+      </ul>
+    </div> */}
     {/* <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
