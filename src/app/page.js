@@ -4,14 +4,15 @@ import { fetchEntries } from '../lib/contentful';
 
 export default async function Home() {
   const items = await fetchEntries();
-  // console.log(items);
   const wishLists = items.filter(item => item.sys.contentType.sys.id === "wishList");
-  console.log(wishLists);
+  const categories = items.filter(item => item.sys.contentType.sys.id === "category");
+  const wishListItems = items.filter(item => item.sys.contentType.sys.id === "item");
   return (
     <>
     <h1 className="text-2xl font-bold p-4">Wish Lists 2024</h1>
-    <WishList items={items} />
-    <WishList items={items} />
+    {wishLists.map(wishList => (
+      <WishList key={wishList.sys.id} currentWishList={wishList} categories={categories} items={wishListItems} />
+    ))}
 
     {/* <div>
       Hello world
