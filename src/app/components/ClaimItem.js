@@ -7,6 +7,11 @@ const ClaimItem = ({ currentItem }) => {
   const [showForm, setShowForm] = useState(false);
   const [showClaimed, setShowClaimed] = useState(false);
 
+  const itemId = currentItem.sys.id;
+  const fields = currentItem.fields;
+
+  // console.log("currentItem", currentItem);
+
   const handleClaim = () => {
     setShowForm(!showForm);
   }
@@ -14,6 +19,7 @@ const ClaimItem = ({ currentItem }) => {
   const handleClaimWithoutEmail = (e) => {
     e.preventDefault();
     setShowClaimed(true);
+    patchEntry(itemId, {isClaimed: true});
     console.log("handling claim without email");
   }
 

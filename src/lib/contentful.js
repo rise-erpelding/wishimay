@@ -16,6 +16,8 @@ export async function fetchEntries() {
 }
 
 export async function patchEntry(entryId, updatedFields) {
+    console.log("entryId", entryId)
+    console.log("updatedFields", updatedFields)
     try {
         const space = await managementClient.getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
         const environment = await space.getEnvironment('master');
