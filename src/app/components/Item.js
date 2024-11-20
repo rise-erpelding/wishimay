@@ -3,8 +3,13 @@ import ClaimItem from './ClaimItem';
 import './css/Item.css';
 
 const Item = ({ currentItem }) => {
+  const isClaimed = currentItem.fields.isClaimed;
+  const liBaseClassNames = "p-4 item mb-2 rounded-lg flex sm: flex-col gap-2 bg-neutral-50 shadow";
+  const liClassNames = isClaimed ? 
+    liBaseClassNames + " line-through" :
+    liBaseClassNames;
   return (
-    <li className="p-4 item mb-2 rounded-lg flex gap-2">
+    <li className={liClassNames}>
       <div>
         {currentItem.fields.url ? (
           <a href={currentItem.fields.url} className="font-semibold mb-1">

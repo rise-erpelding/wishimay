@@ -6,11 +6,13 @@ import './css/ClaimItem.css';
 const ClaimItem = ({ currentItem }) => {
   const [showForm, setShowForm] = useState(false);
   const [showClaimed, setShowClaimed] = useState(false);
+  const [emailAddress, setEmailAddress] = useState("");
 
   const itemId = currentItem.sys.id;
-  const fields = currentItem.fields;
 
-  // console.log("currentItem", currentItem);
+  const handleInputChange = (e) => {
+    setEmailAddress(e.target.value);
+  }
 
   const handleClaim = () => {
     setShowForm(!showForm);
@@ -20,19 +22,18 @@ const ClaimItem = ({ currentItem }) => {
     e.preventDefault();
     setShowClaimed(true);
     patchEntry(itemId, {isClaimed: true});
-    console.log("handling claim without email");
   }
 
   const handleClaimWithEmail = (e) => {
     e.preventDefault();
+    patchEntry(itemId, {isClaimed: true, claimedBy: emailAddress})
     setShowClaimed(true);
-    console.log("handling claim with email");
   }
 
   const handleUnclaim = (e) => {
     e.preventDefault();
+    patchEntry(itemId, {isClaimed: false, claimedBy: ""})
     setShowClaimed(false);
-    console.log("handle unclaim");
   }
 
   return (
@@ -46,7 +47,13 @@ const ClaimItem = ({ currentItem }) => {
       </button>
       <form className={showForm ? "claim-item-form" : "claim-item-form hidden"}>
         <label htmlFor="email">Enter email address:</label>
-        <input id="email" name="email" type="email"></input>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          value={emailAddress}
+          onChange={handleInputChange}
+        ></input>
         <div className="button-group">
           <button
             onClick={handleClaimWithoutEmail}
