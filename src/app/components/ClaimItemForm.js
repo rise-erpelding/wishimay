@@ -3,19 +3,19 @@ import { useState } from 'react';
 import { patchEntry } from '../../lib/contentful';
 import { CloseButton } from './Icons';
 
-const ClaimItemForm = ({ showForm, itemId, handleShowClaimed }) => {
+const ClaimItemForm = ({ itemId, handleShowClaimed, handleCloseForm }) => {
   const [emailAddress, setEmailAddress] = useState("");
 
   const handleClaimWithoutEmail = (e) => {
     e.preventDefault();
-    handleShowClaimed(true);
+    handleShowClaimed();
     patchEntry(itemId, { isClaimed: true });
   }
 
   const handleClaimWithEmail = (e) => {
     e.preventDefault();
     patchEntry(itemId, { isClaimed: true, claimedBy: emailAddress })
-    handleShowClaimed(true);
+    handleShowClaimed();
   }
 
   const handleInputChange = (e) => {
@@ -23,14 +23,14 @@ const ClaimItemForm = ({ showForm, itemId, handleShowClaimed }) => {
   }
 
   return (
-    <div className={showForm ? "bg-white p-6" : "bg-white p-6 hidden"}>
+    <div className="bg-white p-6 rounded-b-lg md:rounded-lg">
       <div className="flex flex-row-reverse">
-        <CloseButton size={16} />
+        <button onClick={handleCloseForm}><CloseButton size={16} /></button>
       </div>
-      <form className={showForm ? "" : "hidden"}>
+      <form>
         <label htmlFor="email" className="block mb-1">Email</label>
         <input
-          className="block border border-neutral-500 w-full h-10 rounded-lg"
+          className="block border border-neutral-500 w-full h-10 rounded-lg px-2"
           id="email"
           name="email"
           type="email"

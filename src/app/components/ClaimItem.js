@@ -15,7 +15,14 @@ const ClaimItem = ({ currentItem }) => {
   }, [existingClaimedStatus]);
 
   const handleClaim = () => {
-    setShowForm(!showForm);
+    setShowForm(true);
+  }
+
+  const handleCloseForm = () => setShowForm(false);
+
+  const handleShowClaimed = () => {
+    setShowClaimed(true);
+    setShowForm(false);
   }
 
   const handleUnclaim = async (e) => {
@@ -28,44 +35,48 @@ const ClaimItem = ({ currentItem }) => {
     }
   };
 
+
   return (
     <>
-      {existingClaimedStatus ? (
-        <div>
-          <h5>Already claimed</h5>
+    {existingClaimedStatus && !showForm && (
+      <div>
+        <h5>Already claimed</h5>
+      </div>
+    )}
+    {!showForm && !showClaimed && (
+      <div className="flex items-center justify-between gap-4">
+        <h5>Planning to buy this? Claim it!</h5>
+        <button
+          className="border-transparent rounded-lg bg-blue-600 text-white p-2"
+          onClick={handleClaim}
+        >
+          Claim
+        </button>
+      </div>
+    )
+    }
+    {showForm && (
+      <ClaimItemForm
+        itemId={itemId}
+        handleShowClaimed={handleShowClaimed}
+        handleCloseForm={handleCloseForm}
+      />
+    )}
+    {!existingClaimedStatus && showClaimed && !showForm && (
+      <div className="flex items-center justify-between gap-4">
+        <p className="text-xl font-bold pt-6">Claimed!</p>
+        <div className="text-right">
+          <p className="text-neutral-700 mb-2">Need to undo?</p>
+          <button
+            className="border border-black border-solid rounded-lg p-2"
+            onClick={handleUnclaim}
+            >
+            Undo?
+          </button>
         </div>
-      ) : (
-        <>
-          {showClaimed ? (
-            <div>
-              <p>Claimed!</p>
-              <button
-                className="claim-item-button border-solid border-2"
-                onClick={handleUnclaim}
-              >
-                Undo?
-              </button>
-            </div>
-          ) : (
-            <div>
-              <h5>Planning to buy this? Claim it!</h5>
-              <button
-                className="claim-item-button border-solid border-2"
-                onClick={handleClaim}
-              >
-                Claim
-              </button>
-            </div>
-          )}
-        </>
-      )}
-      {showForm && (
-        <ClaimItemForm
-          showForm={showForm}
-          itemId={itemId}
-          handleShowClaimed={setShowClaimed}
-        />
-      )}
+      </div>
+    )}
+    
     </>
   );
 };
