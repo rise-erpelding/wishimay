@@ -1,0 +1,44 @@
+.item {
+  display: grid;
+  grid-template-areas:
+    "image"
+    "title"
+    "description"
+    "claim";
+  gap: 0.5rem;
+}
+
+.item-title-section {
+  grid-area: title;
+}
+
+.item-description-section {
+  grid-area: description;
+}
+
+.item-image-section {
+  grid-area: image;
+}
+
+.item-claim-item-section {
+  grid-area: claim;
+}
+
+@media screen and (min-width: 640px) {
+  .item {
+    display: grid;
+    grid-template-areas:
+      "title  title       title"
+      "image  description description"
+      "image  description description"
+      "image  claim       claim";
+  }
+
+  .item:has(.claim-item-form) {
+    grid-template-areas:
+      "title title       claim claim"
+      "image description claim claim"
+      "image description claim claim"
+      "image description claim claim";
+  }
+}

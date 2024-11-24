@@ -23,7 +23,7 @@ const ClaimItemForm = ({ itemId, handleShowClaimed, handleCloseForm }) => {
   }
 
   return (
-    <div className="bg-white pt-6 mt-6 rounded-b-lg sm:rounded-lg border-t border-neutral-400 sm:border-0">
+    <div className="claim-item-form bg-white pt-6 mt-6 sm:pt-0 sm:pl-6 sm:mt-0 sm:ml-4 border-t border-neutral-400 sm:border-l sm:border-t-0">
       <div className="flex flex-row-reverse">
         <button onClick={handleCloseForm}><CloseButton size={16} /></button>
       </div>
@@ -41,13 +41,13 @@ const ClaimItemForm = ({ itemId, handleShowClaimed, handleCloseForm }) => {
         <div className="flex justify-end gap-3">
           <button
             onClick={handleClaimWithoutEmail}
-            className="border border-black border-solid rounded-lg p-2"
+            className="border border-black border-solid rounded-lg p-2 sm:text-sm"
           >
             Claim without email
           </button>
           <button
             onClick={handleClaimWithEmail}
-            className="border-transparent rounded-lg bg-blue-600 text-white p-2"
+            className="border-transparent rounded-lg bg-blue-600 text-white p-2 sm:text-sm"
           >
             Claim item
           </button>
