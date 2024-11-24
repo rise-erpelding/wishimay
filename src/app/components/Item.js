@@ -4,26 +4,26 @@ import './css/Item.css';
 
 const Item = ({ currentItem }) => {
   const isClaimed = currentItem.fields.isClaimed;
-  const liBaseClassNames = "p-4 item mb-2 rounded-lg flex sm: flex-col gap-2 bg-neutral-50 shadow";
-  const liClassNames = isClaimed ? 
-    liBaseClassNames + " line-through" :
-    liBaseClassNames;
   return (
-    <li className={liClassNames}>
-      <div>
+    <li className="p-6 mb-2 rounded-lg flex flex-col sm:flex-row gap-2 bg-white shadow">
+      <div className="order-2">
         {currentItem.fields.url ? (
-          <a href={currentItem.fields.url} className="font-semibold mb-1">
-            <h4>{currentItem.fields.title}</h4>
+          <a href={currentItem.fields.url}>
+            <h4 className="font-semibold mb-1 text-2xl sm:text-xl">{currentItem.fields.title}</h4>
           </a>
         ) : (
-          <h4 className="font-semibold mb-1">{currentItem.fields.title}</h4>
+          <h4 className={isClaimed ? "font-semibold mb-1 text-2xl sm:text-xl line-through" : "font-semibold mb-1 text-2xl sm:text-xl"}>{currentItem.fields.title}</h4>
         )}
-        {currentItem.fields.description && <p>{currentItem.fields.description}</p>}
       </div>
-      <div>
-        {currentItem.fields.imageUrl && <img alt={currentItem.fields.title} src={currentItem.fields.imageUrl} className="h-48" />}
+      <div className="order-2">
+        {currentItem.fields.description && <p className={isClaimed ? "text-xl sm:text-base line-through" : "text-xl sm:text-base"}>{currentItem.fields.description}</p>}
       </div>
-      <ClaimItem currentItem={currentItem} />
+      <div className="order-1 m-0 m-auto">
+        {currentItem.fields.imageUrl && <img alt={currentItem.fields.title} src={currentItem.fields.imageUrl} className="w-full max-w-80" />}
+      </div>
+      <div className="order-2">
+        <ClaimItem currentItem={currentItem} />
+      </div>
     </li>
   );
 };
