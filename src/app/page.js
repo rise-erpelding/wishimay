@@ -10,7 +10,7 @@ export default async function Home() {
   const wishListItems = items.filter(item => item.sys.contentType.sys.id === "item");
   return (
     <main>
-      <h1 className="text-2xl font-bold p-4">Wish Lists 2024</h1>
+      <h1 className="text-4xl font-black p-4">Wish Lists 2024</h1>
       {wishLists.map(wishList => (
         <WishList key={wishList.sys.id} currentWishList={wishList} categories={categories} items={wishListItems} />
       ))}
