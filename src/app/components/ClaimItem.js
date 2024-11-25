@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { patchEntry } from '../../lib/contentful';
 import ClaimItemForm from './ClaimItemForm';
-import './css/ClaimItem.css';
 
 const ClaimItem = ({ currentItem }) => {
   const [showForm, setShowForm] = useState(false);
