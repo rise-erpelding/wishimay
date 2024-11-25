@@ -44,10 +44,10 @@ const ClaimItem = ({ currentItem }) => {
       </div>
     )}
     {!showForm && !showClaimed && (
-      <div className="flex items-center gap-4 justify-between sm:justify-end">
+      <div className="flex items-center gap-4 justify-between md:justify-end">
         <h5>Planning to buy this? Claim it!</h5>
         <button
-          className="border-transparent rounded-lg bg-blue-600 text-white p-2 sm:text-sm"
+          className="border-transparent rounded-lg bg-blue-600 text-white p-2 md:text-sm"
           onClick={handleClaim}
         >
           Claim
@@ -68,7 +68,7 @@ const ClaimItem = ({ currentItem }) => {
         <div className="text-right">
           <p className="text-neutral-700 mb-2">Need to undo?</p>
           <button
-            className="border border-black border-solid rounded-lg p-2 sm:text-sm"
+            className="border border-black border-solid rounded-lg p-2 md:text-sm"
             onClick={handleUnclaim}
             >
             Undo?
