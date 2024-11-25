@@ -1,5 +1,4 @@
 import Category from './Category';
-import './css/WishList.css';
 
 const WishList = ({ currentWishList, categories, items }) => {
   const currentWishListId = currentWishList.sys.id;
@@ -9,7 +8,7 @@ const WishList = ({ currentWishList, categories, items }) => {
 
   return (
     <section className="wish-list mb-8 p-4 rounded">
-      <h2 className="text-xl font-bold mb-2">{currentWishList.fields.title}</h2>
+      <h2 className="text-3xl font-black mb-2">{currentWishList.fields.title}</h2>
       <div>
         {wishListCategories.map(wishListCategory => (
           <Category key={wishListCategory.sys.id} currentWishList={currentWishList} currentCategory={wishListCategory} items={items} />

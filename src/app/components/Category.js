@@ -1,5 +1,4 @@
 import Item from './Item';
-import './css/Category.css';
 
 const Category = ({ currentWishList, currentCategory, items }) => {
   const currentWishListId = currentWishList.sys.id;
@@ -14,7 +13,7 @@ const Category = ({ currentWishList, currentCategory, items }) => {
 
   return (
     <section className="category mb-2 p-3 rounded">
-      <h3 className="text-lg font-semibold mb-2">{currentCategory.fields.title}</h3>
+      <h3 className="text-lg font-extrabold uppercase mb-2">{currentCategory.fields.title}</h3>
       <ul>
         {categoryItems.map(categoryItem => (
           <Item key={categoryItem.sys.id} currentItem={categoryItem} />
