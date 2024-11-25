@@ -18,8 +18,12 @@ const Item = ({ currentItem }) => {
       <div className="item-description-section">
         {currentItem.fields.description && <p className={isClaimed ? "text-xl sm:text-base line-through" : "text-xl sm:text-base"}>{currentItem.fields.description}</p>}
       </div>
-      <div className="item-image-section m-0 m-auto">
-        {currentItem.fields.imageUrl && <img alt={currentItem.fields.title} src={currentItem.fields.imageUrl} className="w-full max-w-80" />}
+      <div className="item-image-section flex justify-center">
+        <img
+          alt={currentItem.fields.title}
+          src={currentItem.fields.imageUrl || '/shopping-bags.jpg'}
+          className="item-image"
+        />
       </div>
       <div className="item-claim-item-section">
         <ClaimItem currentItem={currentItem} />
