@@ -25,8 +25,7 @@
 }
 
 .item-image {
-  width: 100%;
-  max-width: 20rem;
+  max-width: 200px;
 }
 
 @media screen and (min-width: 768px) {
@@ -45,11 +44,5 @@
       "image description claim claim"
       "image description claim claim"
       "image description claim claim";
-  }
-
-  .item-image {
-    width: initial;
-    height: 100%;
-    max-height: 8rem;
   }
 }
