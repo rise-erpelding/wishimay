@@ -1,4 +1,4 @@
-import './ClaimItem';
+/* eslint-disable @next/next/no-img-element */
 import ClaimItem from './ClaimItem';
 import './css/Item.css';
 
@@ -18,13 +18,15 @@ const Item = ({ currentItem }) => {
       <div className="item-description-section">
         {currentItem.fields.description && <p className={isClaimed ? "text-xl text-neutral-500 md:text-base line-through" : "text-xl md:text-base"}>{currentItem.fields.description}</p>}
       </div>
-      <div className="item-image-section flex justify-center">
+      <div className="item-image-section">
         {currentItem.fields.url ? (
           <a href={currentItem.fields.url}>
             <img
               alt={currentItem.fields.title}
               src={currentItem.fields.imageUrl || '/present.jpg'}
               className="item-image"
+              width={150}
+              height={150}
             />
           </a>
         ) : (
@@ -32,6 +34,8 @@ const Item = ({ currentItem }) => {
             alt={currentItem.fields.title}
             src={currentItem.fields.imageUrl || '/present.jpg'}
             className="item-image"
+            width={150}
+            height={150}
           />
           )}
       </div>
