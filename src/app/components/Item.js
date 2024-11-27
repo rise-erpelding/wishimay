@@ -23,14 +23,14 @@ const Item = ({ currentItem }) => {
           <a href={currentItem.fields.url}>
             <img
               alt={currentItem.fields.title}
-              src={currentItem.fields.imageUrl || '/shopping-bags.jpg'}
+              src={currentItem.fields.imageUrl || '/present.jpg'}
               className="item-image"
             />
           </a>
         ) : (
           <img
             alt={currentItem.fields.title}
-            src={currentItem.fields.imageUrl || '/shopping-bags.jpg'}
+            src={currentItem.fields.imageUrl || '/present.jpg'}
             className="item-image"
           />
           )}
