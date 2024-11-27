@@ -3,7 +3,7 @@ import Category from './Category';
 const WishList = ({ currentWishList, categories, items }) => {
   const currentWishListId = currentWishList.sys.id;
   const wishListCategories = categories.filter(category => 
-    category.fields.wishList.some(wishListItem => wishListItem.sys.id === currentWishListId)
+    category.fields.wishList?.some(wishListItem => wishListItem.sys.id === currentWishListId)
   );
 
   return (

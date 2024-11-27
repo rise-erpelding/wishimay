@@ -4,7 +4,7 @@ const Category = ({ currentWishList, currentCategory, items }) => {
   const currentWishListId = currentWishList.sys.id;
   const currentCategoryId = currentCategory.sys.id;
   const categoryItems = items.filter(item => (
-    item.fields.category.some(category => (
+    item.fields.category?.some(category => (
       category.sys.id === currentCategoryId)) &&
       item.fields.wishList.some(wishList => (
         wishList.sys.id === currentWishListId
