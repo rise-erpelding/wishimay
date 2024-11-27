@@ -8,15 +8,15 @@ const Item = ({ currentItem }) => {
     <li className="item p-6 mb-2 rounded-lg bg-white shadow max-w-4xl">
       <div className="item-title-section">
         {currentItem.fields.url ? (
-          <a href={currentItem.fields.url} className="underline">
-            <h4 className="font-semibold mb-1 text-2xl md:text-xl">{currentItem.fields.title}</h4>
+          <a href={currentItem.fields.url} className="underline decoration-neutral-500">
+            <h4 className={isClaimed ? "font-semibold mb-1 text-neutral-500 text-2xl md:text-xl line-through" : "font-semibold mb-1 text-2xl md:text-xl"}>{currentItem.fields.title}</h4>
           </a>
         ) : (
-          <h4 className={isClaimed ? "font-semibold mb-1 text-2xl md:text-xl line-through" : "font-semibold mb-1 text-2xl md:text-xl"}>{currentItem.fields.title}</h4>
+          <h4 className={isClaimed ? "font-semibold mb-1 text-neutral-500 text-2xl md:text-xl line-through" : "font-semibold mb-1 text-2xl md:text-xl"}>{currentItem.fields.title}</h4>
         )}
       </div>
       <div className="item-description-section">
-        {currentItem.fields.description && <p className={isClaimed ? "text-xl md:text-base line-through" : "text-xl md:text-base"}>{currentItem.fields.description}</p>}
+        {currentItem.fields.description && <p className={isClaimed ? "text-xl text-neutral-500 md:text-base line-through" : "text-xl md:text-base"}>{currentItem.fields.description}</p>}
       </div>
       <div className="item-image-section flex justify-center">
         {currentItem.fields.url ? (
