@@ -11,11 +11,17 @@ const Category = ({ currentWishList, currentCategory, items }) => {
       ))
     ));
 
+  const sortedCategoryItems = categoryItems.sort((a, b) => {
+    if (a.fields.isClaimed && !b.fields.isClaimed) return 1;
+    if (!a.fields.isClaimed && b.fields.isClaimed) return -1;
+    return a.fields.title.toLowerCase().localeCompare(b.fields.title.toLowerCase());
+  });
+
   return (
     <section className="category mb-2 p-3 rounded">
       <h3 className="text-lg font-extrabold uppercase mb-2">{currentCategory.fields.title}</h3>
       <ul>
-        {categoryItems.map(categoryItem => (
+        {sortedCategoryItems.map(categoryItem => (
           <Item key={categoryItem.sys.id} currentItem={categoryItem} />
         ))}
       </ul>
