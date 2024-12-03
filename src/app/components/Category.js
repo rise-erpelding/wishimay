@@ -14,7 +14,7 @@ const Category = ({ currentWishList, currentCategory, items }) => {
   const sortedCategoryItems = categoryItems.sort((a, b) => {
     if (a.fields.isClaimed && !b.fields.isClaimed) return 1;
     if (!a.fields.isClaimed && b.fields.isClaimed) return -1;
-    return a.fields.title.toLowerCase().localeCompare(b.fields.title.toLowerCase());
+    return a.fields.title?.toLowerCase().localeCompare(b.fields.title?.toLowerCase());
   });
 
   return (
