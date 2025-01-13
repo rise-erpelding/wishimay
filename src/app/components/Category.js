@@ -14,8 +14,9 @@ const Category = ({ currentWishList, currentCategory, items }) => {
       category.sys.id === currentCategoryId)) &&
       item.fields.wishList.some(wishList => (
         wishList.sys.id === currentWishListId
-      ))
-    ));
+      )) &&
+      !item.fields.isStale // Exclude stale items
+  ));
 
   const sortedCategoryItems = categoryItems.sort((a, b) => {
     if (a.fields.isClaimed && !b.fields.isClaimed) return 1;
