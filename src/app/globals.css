@@ -12,6 +12,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.hidden {
+.hidden,
+.is-closed {
   display: none;
+}
+
+.is-open {
+  display: block;
 }
